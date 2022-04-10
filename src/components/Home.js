@@ -14,7 +14,6 @@ class Home extends Component {
     return (
       <>
         <h1>Items Page</h1>
-
         <div>
           <section class="intro">
             <div class="mask d-flex align-items-center h-100">

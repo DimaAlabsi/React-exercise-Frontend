@@ -25,6 +25,7 @@ export class Orders extends Component {
   }
   omponentDidMount = () => {
     this.handelCall();
+    console.log(this.state.orders);
   };
   handelCall = () => {
     console.log("call");
@@ -72,6 +73,27 @@ export class Orders extends Component {
       [e.target.name]: e.target.value,
     });
   };
+  orderNoHandle = (e) => {
+    this.setState({
+      orderNo: e.target.value,
+    });
+  };
+  customerIdHandle = (e) => {
+    this.setState({
+      customerId: e.target.value,
+    });
+  };
+  deliveryDateHandle = (e) => {
+    this.setState({
+      deliveryDate: e.target.value,
+    });
+  };
+  dateHandle = (e) => {
+    this.setState({
+      date: e.target.value,
+    });
+  };
+
   handleUpdate = (id, orderNo, customerId, date, deliveryDate) => {
     this.setState({
       id: id,
@@ -117,41 +139,44 @@ export class Orders extends Component {
 
                         <i class="fas fa-user-astronaut fa-3x my-5"></i>
                         <div class="form-outline mb-3">
-                          <input
-                            type="date"
-                            name="date"
-                            placeholder="date"
-                            onChange={this.handleItem}
-                            class="form-control form-control-lg"
-                          />
-                        </div>
-
-                        <div class="form-outline mb-3">
-                          <input
-                            type="date"
-                            name="deliveryDate"
-                            placeholder="deliveryDate"
-                            onChange={this.handleItem}
-                            class="form-control form-control-lg"
-                          />
-                        </div>
-
-                        <div class="form-outline mb-3">
-                          <input
-                            type="number"
-                            placeholder="customerId"
-                            name="customerId"
-                            onChange={this.handleItem}
-                            class="form-control form-control-lg"
-                          />
-                        </div>
-
-                        <div class="form-outline mb-3">
+                          <label for="orderNo">Order No</label>
                           <input
                             type="number"
                             placeholder="orderNo"
                             name="orderNo"
-                            onChange={this.handleItem}
+                            onChange={this.orderNoHandle}
+                            class="form-control form-control-lg"
+                          />
+                        </div>
+                        <div class="form-outline mb-3">
+                          <label for="customerId">Customer Id</label>
+
+                          <input
+                            type="number"
+                            placeholder="customerId"
+                            name="customerId"
+                            onChange={this.customerIdHandle}
+                            class="form-control form-control-lg"
+                          />
+                        </div>
+                        <div class="form-outline mb-3">
+                          <label for="date">Date</label>
+                          <input
+                            type="date"
+                            name="date"
+                            placeholder="date"
+                            onChange={this.dateHandle}
+                            class="form-control form-control-lg"
+                          />
+                        </div>
+
+                        <div class="form-outline mb-3">
+                          <label for="deliveryDate">Delivery Date</label>
+                          <input
+                            type="date"
+                            name="deliveryDate"
+                            placeholder="deliveryDate"
+                            onChange={this.deliveryDateHandle}
                             class="form-control form-control-lg"
                           />
                         </div>
@@ -196,6 +221,7 @@ export class Orders extends Component {
                       <button
                         onClick={() => {
                           this.handleUpdate(
+                            i.id,
                             i.orderNo,
                             i.customerId,
                             i.date,
@@ -229,7 +255,7 @@ export class Orders extends Component {
             <Modal.Body>
               <Form onSubmit={this.handlesubmit}>
                 <Form.Group className="mb-3">
-                  <Form.Label>customerID{this.state.customerId}</Form.Label>
+                  {/* <Form.Label>customerID{this.state.customerId}</Form.Label> */}
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label>orderNo</Form.Label>
@@ -237,7 +263,7 @@ export class Orders extends Component {
                     type="number"
                     value={this.state.orderNo}
                     name="orderNo"
-                    onChange={this.handleItem}
+                    onChange={this.orderNoHandle}
                   />
                 </Form.Group>
 
@@ -247,16 +273,16 @@ export class Orders extends Component {
                     type="number"
                     value={this.state.customerId}
                     name="customerId"
-                    onChange={this.handleItem}
+                    onChange={this.customerIdHandle}
                   />
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label>date</Form.Label>
                   <Form.Control
                     type="date"
-                    value={this.state.deliveryDate}
-                    name="deliveryDate"
-                    onChange={this.handleItem}
+                    value={this.state.date}
+                    name="date"
+                    onChange={this.dateHandle}
                   />
                 </Form.Group>
                 <Form.Group className="mb-3">
@@ -265,7 +291,7 @@ export class Orders extends Component {
                     type="date"
                     value={this.state.deliveryDate}
                     name="deliveryDate"
-                    onChange={this.handleItem}
+                    onChange={this.deliveryDateHandle}
                   />
                 </Form.Group>
                 <Button variant="primary" type="submit">

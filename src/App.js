@@ -62,6 +62,7 @@ export class App extends Component {
       showmodal: false,
     });
   };
+
   itemCodeHandle = (e) => {
     this.setState({
       itemCode: e.target.value,
@@ -93,8 +94,6 @@ export class App extends Component {
       itemCode: this.state.itemCode,
       quantity: this.state.quantity,
       price: this.state.price,
-      
-     
     };
     await axios.put(
       `${process.env.REACT_APP_BACKEND_URL}/items/${this.state.id}`,
@@ -117,10 +116,9 @@ export class App extends Component {
                 items={this.state.items}
                 id={this.state.id}
                 showmodal={this.state.showmodal}
-              itemCode={this.state.itemCode}
+                itemCode={this.state.itemCode}
                 quantity={this.state.quantity}
                 price={this.state.price}
-             
                 itemCodeHandle={this.itemCodeHandle}
                 quantityHandle={this.quantityHandle}
                 priceHandle={this.priceHandle}
